@@ -2,16 +2,17 @@ import './App.css';
 import ScanScreen from './pages/ScanScreen';
 import Navbar from './components/Navbar';
 import RegisterScreen from './pages/RegisterScreen';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 function App() {
   return (
-    <>
-      <Navbar />
-
-      {/* <RegisterScreen /> */}
-
-      <ScanScreen />
-    </>
+    <Router>
+    <Navbar/>
+      <Routes>
+        <Route path='/scan' element={<ScanScreen />} />
+        <Route path='/register' element={<RegisterScreen />} />
+      </Routes>
+    </Router>
   );
 }
 
