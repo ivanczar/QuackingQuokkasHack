@@ -1,0 +1,23 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Express backend for the Quacking Quokkas hackathon team",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tamati Rudd",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.3.6",
+    "chai-http": "^4.3.0",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "mocha": "^10.0.0",
+    "mongodb": "^4.10.0",
+    "mongodb-memory-server": "^8.9.3",
+    "nodemon": "^2.0.20"
+  }
+}
