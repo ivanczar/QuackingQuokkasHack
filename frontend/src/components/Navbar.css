@@ -1,32 +1,33 @@
 .navbar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100px;
-    background-color: #031e45;
-    width: 100%;
-    /* justify-content: space-between; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100px;
+  background-color: #031e45;
+  width: 100%;
+  /* justify-content: space-between; */
 }
 
 #logo {
-    width: 60%;
-    height: auto;
-    position: absolute;
-    left: 0;
-    top: 5px;
+  width: 60%;
+  height: auto;
+  position: absolute;
+  left: 0;
+  top: 5px;
 }
 
 #nav-button {
-    width: 100px;
-    background-color: #47bfaf;
-    font-weight: bold;
-    font-size: 15px;
-    border: none;
-    border-radius: 5px;
-    height: 30px;
-    margin-left: 200px;
-    position: absolute;
-    right: 10px;
-    top: 40px;
-    text-transform: capitalize;
+  width: 100px;
+  color: black;
+  background-color: #47bfaf;
+  font-weight: bold;
+  font-size: 15px;
+  border: none;
+  border-radius: 5px;
+  height: 30px;
+  margin-left: 200px;
+  position: absolute;
+  right: 10px;
+  top: 40px;
+  text-transform: capitalize;
 }
