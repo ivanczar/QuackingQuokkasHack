@@ -5,9 +5,11 @@ import RegisterScreen from './pages/RegisterScreen';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 function App() {
+  
   return (
     <Router>
-    <Navbar/>
+    
+      <Navbar/>
       <Routes>
         <Route path='/scan' element={<ScanScreen />} />
         <Route path='/register' element={<RegisterScreen />} />

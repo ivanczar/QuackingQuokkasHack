@@ -18,7 +18,6 @@
 
 #nav-button {
     width: 100px;
-    text-color: aliceblue;
     background-color: #47bfaf;
     font-weight: bold;
     font-size: 15px;
@@ -29,4 +28,5 @@
     position: absolute;
     right: 10px;
     top: 40px;
+    text-transform: capitalize;
 }
