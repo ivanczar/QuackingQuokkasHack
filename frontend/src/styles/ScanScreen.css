@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     background-color: azure;
-    
+
 }
 
 .dog-container {
@@ -13,7 +13,7 @@
 
 }
 
-#phone-button{
+#phone-button {
 
     display: flex;
     align-items: center;
@@ -26,16 +26,23 @@
     font-size: 15px;
     border: none;
     border-radius: 5px;
+
+
+}
+
+#phone-button a {
+    text-decoration: none;
+    color: black;
 }
 
 .form-container {
     display: inline-flex;
     flex-direction: column;
-    align-items: center;    
+    align-items: center;
 
 }
 
-.scan-input{
+.scan-input {
     width: 300px;
     height: 30px;
     border-radius: 5px;
@@ -45,14 +52,14 @@
 
 
 
-.images-container{
+.images-container {
     display: flex;
     flex-direction: column;
     align-items: center;
 
 }
 
-#submit-button{
+#submit-button {
     width: 200px;
     height: 40px;
     text-color: aliceblue;
@@ -64,20 +71,20 @@
     margin-top: 20px;
 }
 
-.bottom-buttons-container{
+.bottom-buttons-container {
     display: flex;
     margin-top: 20px;
     align-content: space-between;
 }
 
-#puppy-pic{
+#puppy-pic {
     clip-path: circle();
     max-width: 300px;
-    height:auto;
+    height: auto;
 }
 
-#logo{
-    width:70%;
+#logo {
+    width: 70%;
     left: 0px;
 }
 
@@ -88,4 +95,3 @@ h1 {
 h3 {
     text-align: center;
 }
-

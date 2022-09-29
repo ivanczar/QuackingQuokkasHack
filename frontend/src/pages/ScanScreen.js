@@ -30,7 +30,7 @@ const ScanScreen = () => {
           My owner's number is: <b>0272392173</b>
         </p>
         <button id='phone-button'>
-          Call owner
+          <a href='tel:+64272392173'>Call Owner</a>
           <CallIcon />
         </button>
       </div>
