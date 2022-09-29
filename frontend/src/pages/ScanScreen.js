@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-
+import CallIcon from '@mui/icons-material/Call';
+import Icon from '@mui/material/Icon';
 import puppyPic from '../assets/Lost_Puppy.jpeg';
 import '../styles/ScanScreen.css';
 
@@ -28,13 +29,14 @@ const ScanScreen = () => {
         <p>
           My owner's number is: <b>0272392173</b>
         </p>
-        <button id='phone-button'>Call owner</button>
+        <button id='phone-button'>
+          Call owner
+          <CallIcon />
+        </button>
       </div>
       <div className='header-container'></div>
       <form onSubmit={handleSubmit}>
         <div className='form-container'>
-          {/* <p>or</p> */}
-          
           <h3>Please enter your details to help me find my owner</h3>
 
           <input
