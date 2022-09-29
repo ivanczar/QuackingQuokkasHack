@@ -1,39 +1,54 @@
-import React from 'react';
-import { useFormik } from 'formik';
+import React, { useState } from 'react';
 
 const ScanScreen = () => {
-  const formik = useFormik({
-    initialValues: {
-      email: '',
-      phone: '',
-    },
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-    },
-  });
+  const [scannerName, setScannerName] = useState('');
+  const [scannerEmail, setScannerEmail] = useState('');
+  const [scannerPhone, setScannerPhone] = useState('');
+  const [ownerEmail, setOwnerEmail] = useState('');
+  const [ownerPhone, setOwnerPhone] = useState('');
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    alert(
+      `The name you entered was: ${scannerName} , ${scannerEmail}, ${scannerPhone}`
+    );
+  };
 
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <label htmlFor='email'>Email Address</label>
+    <div>
+      <h1>I seem to have lost my owner.</h1>
+      <h3>My name is Sacha</h3>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Enter your name:
+          <input
+            type='text'
+            value={scannerName}
+            onChange={(e) => setScannerName(e.target.value)}
+          />
+        </label>
+        <label>
+          Enter your email:
+          <input
+            type='email'
+            value={scannerEmail}
+            onChange={(e) => setScannerEmail(e.target.value)}
+          />
+        </label>
+        <label>
+          Enter your phone:
+          <input
+            type='tel'
+            value={scannerPhone}
+            onChange={(e) => setScannerPhone(e.target.value)}
+          />
+        </label>
+        <input type='submit' />
 
-      <input
-        id='email'
-        name='email'
-        type='email'
-        onChange={formik.handleChange}
-        value={formik.values.email}
-      />
-      <label htmlFor='phone'>Phone number</label>
-      <input
-        id='phone'
-        name='phone'
-        type='text'
-        onChange={formik.handleChange}
-        value={formik.values.phone}
-      />
-
-      <button type='submit'>Submit</button>
-    </form>
+        <button>Email owner</button>
+        <button>Phone owner</button>
+      </form>
+    </div>
   );
 };
 
