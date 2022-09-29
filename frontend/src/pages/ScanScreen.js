@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import CallIcon from '@mui/icons-material/Call';
-import Icon from '@mui/material/Icon';
-import puppyPic from '../assets/Lost_Puppy.jpeg';
-import '../styles/ScanScreen.css';
+import React, { useState } from "react";
+import CallIcon from "@mui/icons-material/Call";
+import Icon from "@mui/material/Icon";
+import puppyPic from "../assets/Lost_Puppy.jpeg";
+import "../styles/ScanScreen.css";
 
 const ScanScreen = () => {
-  const [scannerName, setScannerName] = useState('');
-  const [scannerEmail, setScannerEmail] = useState('');
-  const [scannerPhone, setScannerPhone] = useState('');
-  const [ownerEmail, setOwnerEmail] = useState('');
-  const [ownerPhone, setOwnerPhone] = useState('');
-  const petName = 'Sacha';
+  const [scannerName, setScannerName] = useState("");
+  const [scannerEmail, setScannerEmail] = useState("");
+  const [scannerPhone, setScannerPhone] = useState("");
+  const [ownerEmail, setOwnerEmail] = useState("");
+  const [ownerPhone, setOwnerPhone] = useState("");
+  const petName = "Sacha";
   const handleSubmit = (event) => {
     event.preventDefault();
     alert(
@@ -19,53 +19,53 @@ const ScanScreen = () => {
   };
 
   return (
-    <div className='scan-container'>
-      <h1 className='lost-owner-header'>I seem to have lost my owner.</h1>
-      <div className='dog-container'>
-        <p className='pet-name-header'>
+    <div className="scan-container">
+      <h1 className="lost-owner-header">I seem to have lost my owner.</h1>
+      <div className="dog-container">
+        <p className="pet-name-header">
           My name is <b>{petName}</b>
         </p>
-        <img id='puppy-pic' src={puppyPic} alt='sad puppy' />
+        <img id="puppy-pic" src={puppyPic} alt="sad puppy" />
         <p>
           My owner's number is: <b>0272392173</b>
         </p>
-        <button id='phone-button'>
-          <a href='tel:+64272392173'>Call Owner</a>
-          <CallIcon />
+        <button id="phone-button">
+          <CallIcon id="icon" />
+          <a href="tel:+64272392173">Call Owner</a>
         </button>
       </div>
-      <div className='header-container'></div>
+      <div className="header-container"></div>
       <form onSubmit={handleSubmit}>
-        <div className='form-container'>
+        <div className="form-container">
           <h3>Please enter your details to help me find my owner</h3>
 
           <input
-            className='scan-input'
-            type='text'
+            className="scan-input"
+            type="text"
             value={scannerName}
-            placeholder='Full Name*'
+            placeholder="Full Name*"
             onChange={(e) => setScannerName(e.target.value)}
           />
 
           <input
-            className='scan-input'
-            type='email'
+            className="scan-input"
+            type="email"
             value={scannerEmail}
-            placeholder='Email Address*'
+            placeholder="Email Address*"
             onChange={(e) => setScannerEmail(e.target.value)}
           />
 
           <input
-            className='scan-input'
-            type='tel'
+            className="scan-input"
+            type="tel"
             value={scannerPhone}
-            placeholder='Phone Number'
+            placeholder="Phone Number"
             onChange={(e) => setScannerPhone(e.target.value)}
           />
-          <input id='submit-button' className='submit-button' type='submit' />
+          <input id="submit-button" className="submit-button" type="submit" />
         </div>
       </form>
-      <div className='bottom-buttons-container'></div>
+      <div className="bottom-buttons-container"></div>
     </div>
   );
 };
