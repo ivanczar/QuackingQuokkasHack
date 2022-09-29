@@ -2,28 +2,64 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: azure;
     
 }
 
-.header-container {
+.dog-container {
     display: flex;
     flex-direction: column;
     align-items: center;
 
+}
+
+#phone-button{
+
+    width: 200px;
+    height: 40px;
+    text-color: aliceblue;
+    background-color: #47bfaf;
+    font-weight: bold;
+    font-size: 15px;
+    border: none;
+    border-radius: 5px;
 }
 
 .form-container {
     display: inline-flex;
     flex-direction: column;
     align-items: center;    
+
 }
+
+.scan-input{
+    width: 300px;
+    height: 30px;
+    border-radius: 5px;
+    margin-top: 5px;
+
+}
+
+
 
 .images-container{
     display: flex;
     flex-direction: column;
     align-items: center;
+
 }
 
+#submit-button{
+    width: 200px;
+    height: 40px;
+    text-color: aliceblue;
+    background-color: #47bfaf;
+    font-weight: bold;
+    font-size: 15px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+}
 
 .bottom-buttons-container{
     display: flex;
@@ -32,12 +68,14 @@
 }
 
 #puppy-pic{
-    width: 200px;
-    height:250px;
+    clip-path: circle();
+    max-width: 300px;
+    height:auto;
 }
 
 #logo{
-    width:90%;
+    width:70%;
+    left: 0px;
 }
 
 h1 {
