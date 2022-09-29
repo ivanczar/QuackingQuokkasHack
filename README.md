@@ -4,7 +4,7 @@ This service is for pet owners to have a more advanced way to attatch their cont
 
 ## Try it out
 
-$ git clone git@github.com:ivanczar/QuackingQuokkasHack.git
+$ git clone git@github.com:ivanczar/QuackingQuokkasHack.git \n
 $ cd QuackingQuokkasHack
 $ npm install
 $ cd frontend
