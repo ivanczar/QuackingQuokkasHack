@@ -1,13 +1,16 @@
-import "./App.css";
-import ScanScreen from "./pages/ScanScreen";
-import Navbar from "./components/Navbar";
-import RegisterScreen from "./pages/RegisterScreen";
+import './App.css';
+import ScanScreen from './pages/ScanScreen';
+import Navbar from './components/Navbar';
+import RegisterScreen from './pages/RegisterScreen';
 
 function App() {
   return (
     <>
       <Navbar />
-      <RegisterScreen />
+
+      {/* <RegisterScreen /> */}
+
+      <ScanScreen />
     </>
   );
 }
