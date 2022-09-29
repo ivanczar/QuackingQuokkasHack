@@ -4,7 +4,10 @@ import ScanScreen from './pages/ScanScreen';
 function App() {
   return (
     <>
+    <div>
       <ScanScreen />
+
+    </div>
     </>
   );
 }
