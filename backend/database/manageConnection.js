@@ -12,8 +12,7 @@ let db;
 module.exports = {
   //Connect to the cluster and set the database to use
   connectToCluster: async function () {
-    if (process.env.NODE_ENV === 'testing') {
-      //Unit testing: setup MongoMemoryServer
+    if (process.env.NODE_ENV === 'testing') { //Unit testing: setup MongoMemoryServer to simulate database
       let mongoServer = await MongoMemoryServer.create();
       clusterUri = mongoServer.getUri();
     }
