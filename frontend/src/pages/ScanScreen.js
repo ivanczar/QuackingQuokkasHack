@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CallIcon from "@mui/icons-material/Call";
 import puppyPic from "../assets/Lost_Puppy.jpeg";
 import "../styles/ScanScreen.css";
@@ -7,7 +7,7 @@ const ScanScreen = () => {
   const [scannerName, setScannerName] = useState("");
   const [scannerEmail, setScannerEmail] = useState("");
   const [scannerPhone, setScannerPhone] = useState("");
-  const microchipNumber = "12345 12345 12345";
+  const [microchipNumber, setMicrochipNumber] = useState();
   const [ownerEmail, setOwnerEmail] = useState("");
   const [ownerPhone, setOwnerPhone] = useState("");
   const petName = "Sacha";
@@ -17,6 +17,17 @@ const ScanScreen = () => {
       `The name you entered was: ${scannerName} , ${scannerEmail}, ${scannerPhone}`
     );
   };
+
+  function random15Digits() {
+    var min = 100000000000000;
+    var max = 900000000000000;
+
+    return Math.floor(Math.random() * min) + max;
+  }
+
+  useEffect(() => {
+    setMicrochipNumber(random15Digits());
+  }, []);
 
   return (
     <div className="scan-container">
