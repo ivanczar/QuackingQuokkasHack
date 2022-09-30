@@ -18,11 +18,11 @@ test("does not submit when pressing submit after invalid email", () => {
   const handleSubmit = jest.fn();
   const { getByTestId } = render(<Form onSubmit={handleSubmit} />);
 
-  const name = getByPlaceholderText("Pet Name*");
-  const email = getByPlaceholderText("Email Address*");
+  // const name = screen.getByPlaceholderText("Pet Name*");
+  // const email = screen.getByPlaceholderText("Email Address*");
 
-  fireEvent.change(name, { target: { value: "abc" } });
-  fireEvent.change(email, { target: { value: "abc@123.com" } });
+  // fireEvent.change(name, { target: { value: "abc" } });
+  // fireEvent.change(email, { target: { value: "abc@123.com" } });
 
   fireEvent.submit(getByTestId("form"));
 
