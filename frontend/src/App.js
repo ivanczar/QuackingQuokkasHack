@@ -17,9 +17,9 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Navigate to="/register" />} />
-        <Route path="/scan" element={<ScanScreen />} />
+        <Route path="/scan/:id" element={<ScanScreen />} />
         <Route path="/register" element={<RegisterScreen />} />
-        <Route path="*" element={<PageNotFound404 />} />
+        {/* <Route path="*" element={<PageNotFound404 />} /> */}
       </Routes>
     </Router>
   );
