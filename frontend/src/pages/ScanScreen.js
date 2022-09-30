@@ -3,6 +3,7 @@ import CallIcon from "@mui/icons-material/Call";
 import Icon from "@mui/material/Icon";
 import puppyPic from "../assets/Lost_Puppy.jpeg";
 import "../styles/ScanScreen.css";
+import QR from "../components/QR";
 
 const ScanScreen = () => {
   const [scannerName, setScannerName] = useState("");
@@ -64,9 +65,12 @@ const ScanScreen = () => {
           />
           <input id="submit-button" className="submit-button" type="submit" />
         </div>
+        <div>{QR()}</div>
       </form>
+      
       <div className="bottom-buttons-container"></div>
     </div>
+    
   );
 };
 
