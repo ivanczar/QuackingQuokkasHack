@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import CallIcon from "@mui/icons-material/Call";
-import Icon from "@mui/material/Icon";
 import puppyPic from "../assets/Lost_Puppy.jpeg";
 import "../styles/ScanScreen.css";
 import axios from "axios";
@@ -17,11 +16,14 @@ const ScanScreen = () => {
   const { petID } = useParams();
   const [microchipNumber, setMicrochipNumber] = useState();
 
+  // Generate a random 15 digits
   function random15Digits() {
     var min = 100000000000000;
     var max = 900000000000000;
 
-    return Math.floor(Math.random() * min) + max;
+    // Return random 15 digits
+    var num = (Math.floor(Math.random() * min) + max).toLocaleString("fr");
+    return num.replace(/\B(?=(\d{3})+(?!\d))/g, " ");
   }
 
   useEffect(() => {
@@ -55,9 +57,14 @@ const ScanScreen = () => {
       <h1 className="lost-owner-header">I seem to have lost my owner.</h1>
       <div className="dog-container">
         {ownerDetails && (
-          <p className="pet-name-header">
-            My name is <b>{ownerDetails.pet.name}</b>
-          </p>
+          <>
+            <p className="pet-name-header">
+              My name is <b>{ownerDetails.pet.name}</b>
+            </p>
+            <p className="pet-name-header">
+              My microchip number is: <b>{microchipNumber}</b>
+            </p>
+          </>
         )}
         <img id="puppy-pic" src={puppyPic} alt="lost puppy" />
         {ownerDetails.owner.phone ? (
