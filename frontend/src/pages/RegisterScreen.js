@@ -22,24 +22,28 @@ const RegisterScreen = () => {
   }, [QrId]);
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-    let data = {
-      owner: {
-        email: `${owner.ownerEmail}`,
-        phone: `${owner.ownerPhone}`,
-      },
-      pet: {
-        name: `${owner.petName}`,
-      },
-    };
+    if (owner.petName && owner.ownerEmail) {
+      event.preventDefault();
+      let data = {
+        owner: {
+          email: `${owner.ownerEmail}`,
+          phone: `${owner.ownerPhone}`,
+        },
+        pet: {
+          name: `${owner.petName}`,
+        },
+      };
 
-    axios
-      .post("http://localhost:4000/api/register", data)
-      .then((response) => setQrId(response.data))
-      .catch((err) => {
-        console.error(err);
-        alert("Network error. Please try again later");
-      });
+      axios
+        .post("http://localhost:4000/api/register", data)
+        .then((response) => setQrId(response.data))
+        .catch((err) => {
+          console.error(err);
+          alert("Network error. Please try again later");
+        });
+    } else {
+      alert("Please fill in all the required details.");
+    }
   };
 
   return (
