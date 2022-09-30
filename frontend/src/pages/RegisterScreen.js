@@ -1,13 +1,13 @@
-import React, { useEffect, useState, useRef } from 'react';
-import '../styles/ScanScreen.css';
-import QR from '../components/QR';
-import axios from 'axios';
+import React, { useEffect, useState, useRef } from "react";
+import "../styles/ScanScreen.css";
+import QR from "../components/QR";
+import axios from "axios";
 
 const RegisterScreen = () => {
   const [owner, setOwner] = useState({
-    petName: '',
-    ownerEmail: '',
-    ownerPhone: '',
+    petName: "",
+    ownerEmail: "",
+    ownerPhone: "",
   });
 
   const [QrId, setQrId] = useState();
@@ -34,29 +34,29 @@ const RegisterScreen = () => {
     };
 
     axios
-      .post('http://localhost:4000/api/register', data)
+      .post("http://localhost:4000/api/register", data)
       .then((response) => setQrId(response.data))
       .catch((err) => {
         console.error(err);
-        alert('Network error. Please try again later');
+        alert("Network error. Please try again later");
       });
   };
 
   return (
-    <div className='scan-container'>
+    <div className="scan-container">
       {Qr === null ? (
         <div>
-          <h1 className='lost-owner-header'>Pet Owner Register</h1>
-          <div className='header-container'></div>
-          <form onSubmit={handleSubmit}>
-            <div className='form-container'>
+          <h1 className="lost-owner-header">Pet Owner Register</h1>
+          <div className="header-container"></div>
+          <form onSubmit={handleSubmit} data-testid="form">
+            <div className="form-container">
               <h3>Please enter your details to register a pet</h3>
 
               <input
-                className='scan-input'
-                type='text'
+                className="scan-input"
+                type="text"
                 value={owner.petName}
-                placeholder='Pet Name*'
+                placeholder="Pet Name*"
                 required
                 onChange={(e) =>
                   setOwner({ ...owner, petName: e.target.value })
@@ -64,10 +64,10 @@ const RegisterScreen = () => {
               />
 
               <input
-                className='scan-input'
-                type='email'
+                className="scan-input"
+                type="email"
                 value={owner.ownerEmail}
-                placeholder='Email Address*'
+                placeholder="Email Address*"
                 required
                 onChange={(e) =>
                   setOwner({ ...owner, ownerEmail: e.target.value })
@@ -75,20 +75,21 @@ const RegisterScreen = () => {
               />
 
               <input
-                className='scan-input'
-                type='tel'
+                className="scan-input"
+                type="tel"
                 value={owner.ownerPhone}
-                placeholder='Phone Number (optional)'
+                placeholder="Phone Number (optional)"
                 onChange={(e) =>
                   setOwner({ ...owner, ownerPhone: e.target.value })
                 }
               />
 
               <input
-                id='submit-button'
-                className='submit-button'
-                type='submit'
+                id="submit-button"
+                className="submit-button"
+                type="submit"
                 onClick={handleSubmit}
+                placeholder="submit button"
               />
             </div>
           </form>
