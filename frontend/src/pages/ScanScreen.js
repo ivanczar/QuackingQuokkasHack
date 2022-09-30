@@ -10,16 +10,10 @@ const ScanScreen = () => {
   const [scannerName, setScannerName] = useState('');
   const [scannerEmail, setScannerEmail] = useState('');
   const [scannerPhone, setScannerPhone] = useState('');
-  // const [ownerDetails, setOwnerDetails] = useState({
-  //   owner: {
-  //     email: '',
-  //     phone: '',
-  //   },
-  //   pet: {
-  //     name: '',
-  //   },
-  // });
-  const [petName, setPetName] = useState('');
+  const [ownerDetails, setOwnerDetails] = useState({
+    owner: {},
+    pet: {},
+  });
   const { petID } = useParams();
 
   const handleSubmit = (event) => {
@@ -30,35 +24,41 @@ const ScanScreen = () => {
   };
 
   const getOwnerDetails = () => {
-    axios.get('http://localhost:4000/api/retrievePet/' + petID).then(
-      (response) => setPetName(response.data.pet.name)
-      // setOwnerDetails({
-      //   [ownerDetails.owner.email]: response.data.owner.email,
-      //   [ownerDetails.owner.phone]: response.data.owner.phone,
-      //   [ownerDetails.pet.name]: response.data.pet.name,
-      // })
-    );
+    axios
+      .get('http://localhost:4000/api/retrievePet/' + petID)
+      .then((response) => {
+        setOwnerDetails(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+        alert('Network error. Please try again later');
+      });
   };
 
   useEffect(() => {
     getOwnerDetails();
   }, []);
-
   return (
     <div className='scan-container'>
       <h1 className='lost-owner-header'>I seem to have lost my owner.</h1>
       <div className='dog-container'>
-        <p className='pet-name-header'>
-          My name is <b>{petName}</b>
-        </p>
+        {ownerDetails && (
+          <p className='pet-name-header'>
+            My name is <b>{ownerDetails.pet.name}</b>
+          </p>
+        )}
         <img id='puppy-pic' src={puppyPic} alt='lost puppy' />
-        <p>
-          My owner's number is: <b>0272392173</b>
-        </p>
-        <button id='phone-button'>
-          <CallIcon id='icon' />
-          <a href='tel:+64272392173'>Call Owner</a>
-        </button>
+        {ownerDetails.owner.phone ? (
+          <p>
+            My owner's number is: <b>{ownerDetails.owner.phone}</b>
+          </p>
+        ) : null}
+        {ownerDetails.owner.phone && (
+          <button id='phone-button'>
+            <CallIcon id='icon' />
+            <a href={`tel:${ownerDetails.owner.phone}`}>Call Owner</a>
+          </button>
+        )}
       </div>
       <div className='header-container'></div>
       <form onSubmit={handleSubmit}>
