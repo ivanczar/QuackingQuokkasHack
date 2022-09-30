@@ -88,6 +88,7 @@ const RegisterScreen = () => {
                 className='submit-button'
                 type='submit'
                 onClick={handleSubmit}
+                placeholder='submit button'
               />
             </div>
           </form>
