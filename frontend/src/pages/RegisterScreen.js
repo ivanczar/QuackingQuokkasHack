@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../styles/ScanScreen.css";
+import QR from "../components/QR";
 
 const RegisterScreen = () => {
   const [owner, setOwner] = useState({
@@ -14,6 +15,8 @@ const RegisterScreen = () => {
       `The name you entered was: ${owner.petName}, ${owner.ownerEmail}, ${owner.ownerPhone}.`
     );
   };
+
+  
 
   return (
     <div className="scan-container">
@@ -49,6 +52,8 @@ const RegisterScreen = () => {
           <input id="submit-button" className="submit-button" type="submit" />
         </div>
       </form>
+      
+      <div>{QR()}</div>
     </div>
   );
 };
