@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import CallIcon from "@mui/icons-material/Call";
-import Icon from "@mui/material/Icon";
 import puppyPic from "../assets/Lost_Puppy.jpeg";
 import "../styles/ScanScreen.css";
 
@@ -8,6 +7,7 @@ const ScanScreen = () => {
   const [scannerName, setScannerName] = useState("");
   const [scannerEmail, setScannerEmail] = useState("");
   const [scannerPhone, setScannerPhone] = useState("");
+  const microchipNumber = "12345 12345 12345";
   const [ownerEmail, setOwnerEmail] = useState("");
   const [ownerPhone, setOwnerPhone] = useState("");
   const petName = "Sacha";
@@ -24,6 +24,9 @@ const ScanScreen = () => {
       <div className="dog-container">
         <p className="pet-name-header">
           My name is <b>{petName}</b>
+        </p>
+        <p>
+          My microchip number is: <b>{microchipNumber}</b>
         </p>
         <img id="puppy-pic" src={puppyPic} alt="lost puppy" />
         <p>
@@ -65,10 +68,9 @@ const ScanScreen = () => {
           <input id="submit-button" className="submit-button" type="submit" />
         </div>
       </form>
-      
+
       <div className="bottom-buttons-container"></div>
     </div>
-    
   );
 };
 
