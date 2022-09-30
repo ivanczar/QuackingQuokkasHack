@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/ScanScreen.css";
 import QR from "../components/QR";
 import axios from 'axios';
@@ -10,8 +10,13 @@ const RegisterScreen = () => {
     ownerPhone: '',
   });
   
-  const [showQr, setShowQr] = useState(false);
   const [QrId, setQrId] = useState('');
+  const [Qr, setQr] = useState(null);
+
+  useEffect(() => {
+    console.log(QrId);
+    //Use a useRef to prevent this from running on render, but allow it to run on successful API call 
+  }, [QrId]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -24,6 +29,7 @@ const RegisterScreen = () => {
         name: `${owner.petName}`,
       },
     };
+    
     axios
       .post('http://localhost:4000/api/register', data)
       .then((response) => setQrId(response.data))
@@ -32,17 +38,11 @@ const RegisterScreen = () => {
       });
   };
 
-  const handleQrShow = () => {
-    setShowQr(!showQr);
-  }
-
-  
-
   return (
     <div className="scan-container">
-      <h1 className="lost-owner-header">Pet Owner Register</h1>
+      {Qr === null ? <div><h1 className="lost-owner-header">Pet Owner Register</h1>
       <div className="header-container"></div>
-      { !showQr && <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <div className="form-container">
           <h3>Please enter your details to register a pet</h3>
 
@@ -51,6 +51,7 @@ const RegisterScreen = () => {
             type='text'
             value={owner.petName}
             placeholder='Pet Name*'
+            required
             onChange={(e) => setOwner({ ...owner, petName: e.target.value })}
           />
 
@@ -59,6 +60,7 @@ const RegisterScreen = () => {
             type='email'
             value={owner.ownerEmail}
             placeholder='Email Address*'
+            required
             onChange={(e) => setOwner({ ...owner, ownerEmail: e.target.value })}
           />
 
@@ -70,11 +72,11 @@ const RegisterScreen = () => {
             onChange={(e) => setOwner({ ...owner, ownerPhone: e.target.value })}
           />
 
-          <input id="submit-button" className="submit-button" type="submit" onClick={handleQrShow} />
+          <input id="submit-button" className="submit-button" type="submit" onClick={handleSubmit} />
         </div>
-      </form>}
+      </form></div> : Qr}
       
-      <div>{showQr ? QR() : null}</div>
+      
     </div>
   );
 };
