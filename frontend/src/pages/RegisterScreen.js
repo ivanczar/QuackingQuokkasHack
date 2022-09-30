@@ -15,9 +15,9 @@ const RegisterScreen = () => {
 
   useEffect(() => {
     console.log(QrId);
-    
-      QrId && setQr(QR(QrId));
-    
+
+    QrId && setQr(QR(QrId));
+
     //Use a useRef to prevent this from running on render, but allow it to run on successful API call
   }, [QrId]);
 
@@ -37,7 +37,8 @@ const RegisterScreen = () => {
       .post('http://localhost:4000/api/register', data)
       .then((response) => setQrId(response.data))
       .catch((err) => {
-        alert('Service/Network error. Please contact admin');
+        console.error(err);
+        alert('Network error. Please try again later');
       });
   };
 
