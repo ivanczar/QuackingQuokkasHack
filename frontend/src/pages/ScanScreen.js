@@ -25,7 +25,7 @@ const ScanScreen = () => {
         <p className="pet-name-header">
           My name is <b>{petName}</b>
         </p>
-        <img id="puppy-pic" src={puppyPic} alt="sad puppy" />
+        <img id="puppy-pic" src={puppyPic} alt="lost puppy" />
         <p>
           My owner's number is: <b>0272392173</b>
         </p>
