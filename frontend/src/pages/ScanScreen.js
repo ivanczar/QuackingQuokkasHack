@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CallIcon from "@mui/icons-material/Call";
+import TextIcon from "@mui/icons-material/Message";
 import puppyPic from "../assets/Lost_Puppy.jpeg";
 import "../styles/ScanScreen.css";
 import axios from "axios";
@@ -73,10 +74,19 @@ const ScanScreen = () => {
           </p>
         ) : null}
         {ownerDetails.owner.phone && (
-          <button id="phone-button">
-            <CallIcon id="icon" />
-            <a href={`tel:${ownerDetails.owner.phone}`}>Call Owner</a>
-          </button>
+          <>
+            <h4>Contact Owner</h4>
+            <div className="phone-container">
+              <button id="phone-button">
+                <CallIcon id="icon" />
+                <a href={`tel:${ownerDetails.owner.phone}`}>Call</a>
+              </button>
+              <button id="phone-button">
+                <TextIcon id="icon" />
+                <a href={`sms:${ownerDetails.owner.phone}`}>Text</a>
+              </button>
+            </div>
+          </>
         )}
       </div>
       <div className="header-container"></div>
