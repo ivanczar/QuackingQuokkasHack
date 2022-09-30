@@ -12,6 +12,12 @@
   align-items: center;
 }
 
+.phone-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
 #icon {
   color: black;
   margin-right: 10px;
