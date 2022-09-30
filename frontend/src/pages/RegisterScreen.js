@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import '../styles/ScanScreen.css';
+import React, { useState } from "react";
+import "../styles/ScanScreen.css";
+import QR from "../components/QR";
 import axios from 'axios';
 
 const RegisterScreen = () => {
@@ -8,6 +9,8 @@ const RegisterScreen = () => {
     ownerEmail: '',
     ownerPhone: '',
   });
+  
+  const [showQr, setShowQr] = useState(false);
   const [QrId, setQrId] = useState('');
 
   const handleSubmit = (event) => {
@@ -29,12 +32,18 @@ const RegisterScreen = () => {
       });
   };
 
+  const handleQrShow = () => {
+    setShowQr(!showQr);
+  }
+
+  
+
   return (
-    <div className='scan-container'>
-      <h1 className='lost-owner-header'>Pet Owner Register</h1>
-      <div className='header-container'></div>
-      <form onSubmit={handleSubmit}>
-        <div className='form-container'>
+    <div className="scan-container">
+      <h1 className="lost-owner-header">Pet Owner Register</h1>
+      <div className="header-container"></div>
+      { !showQr && <form onSubmit={handleSubmit}>
+        <div className="form-container">
           <h3>Please enter your details to register a pet</h3>
 
           <input
@@ -60,11 +69,16 @@ const RegisterScreen = () => {
             placeholder='Phone Number (optional)'
             onChange={(e) => setOwner({ ...owner, ownerPhone: e.target.value })}
           />
-          <input id='submit-button' className='submit-button' type='submit' />
+
+          <input id="submit-button" className="submit-button" type="submit" onClick={handleQrShow} />
         </div>
-      </form>
+      </form>}
+      
+      <div>{showQr ? QR() : null}</div>
     </div>
   );
 };
+
+
 
 export default RegisterScreen;

@@ -65,8 +65,10 @@ const ScanScreen = () => {
           <input id="submit-button" className="submit-button" type="submit" />
         </div>
       </form>
+      
       <div className="bottom-buttons-container"></div>
     </div>
+    
   );
 };
 
