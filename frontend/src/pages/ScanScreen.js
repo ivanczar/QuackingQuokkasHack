@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import CallIcon from "@mui/icons-material/Call";
 import TextIcon from "@mui/icons-material/Message";
 import puppyPic from "../assets/Lost_Puppy.jpeg";
 import "../styles/ScanScreen.css";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import emailjs from "@emailjs/browser";
 
 const ScanScreen = () => {
   const [scannerName, setScannerName] = useState("");
@@ -15,6 +16,7 @@ const ScanScreen = () => {
     pet: {},
   });
   const { petID } = useParams();
+  const form = useRef();
   const [microchipNumber, setMicrochipNumber] = useState();
 
   // Generate a random 15 digits
@@ -31,11 +33,23 @@ const ScanScreen = () => {
     setMicrochipNumber(random15Digits());
   }, []);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    alert(
-      `The name you entered was: ${scannerName} , ${scannerEmail}, ${scannerPhone}`
-    );
+  const sendEmail = (e) => {
+    e.preventDefault();
+    emailjs
+      .sendForm(
+        "service_zk1av6g",
+        "template_20y07hg",
+        form.current,
+        "af56DOeaGgV914gA7"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
   };
 
   const getOwnerDetails = () => {
@@ -90,13 +104,14 @@ const ScanScreen = () => {
         )}
       </div>
       <div className="header-container"></div>
-      <form onSubmit={handleSubmit}>
+      <form ref={form} onSubmit={sendEmail}>
         <div className="form-container">
           <h3>Please enter your details to help me find my owner</h3>
 
           <input
             className="scan-input"
             type="text"
+            name="scanner_name"
             value={scannerName}
             placeholder="Full Name*"
             onChange={(e) => setScannerName(e.target.value)}
@@ -105,6 +120,7 @@ const ScanScreen = () => {
           <input
             className="scan-input"
             type="email"
+            name="scanner_email"
             value={scannerEmail}
             placeholder="Email Address*"
             onChange={(e) => setScannerEmail(e.target.value)}
@@ -113,10 +129,28 @@ const ScanScreen = () => {
           <input
             className="scan-input"
             type="tel"
+            name="scanner_phone"
             value={scannerPhone}
             placeholder="Phone Number"
             onChange={(e) => setScannerPhone(e.target.value)}
           />
+
+          {ownerDetails.pet.name && (
+            <input
+              type="hidden"
+              name="pet_name"
+              defaultValue={ownerDetails.pet.name}
+            />
+          )}
+
+          {ownerDetails.owner.email && (
+            <input
+              type="hidden"
+              name="owner_email"
+              defaultValue={ownerDetails.owner.email}
+            />
+          )}
+
           <input id="submit-button" className="submit-button" type="submit" />
         </div>
       </form>
