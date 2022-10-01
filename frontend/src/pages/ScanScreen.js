@@ -34,6 +34,7 @@ const ScanScreen = () => {
   }, []);
 
   const sendEmail = (e) => {
+    alert("Email Sent");
     e.preventDefault();
     emailjs
       .sendForm(
